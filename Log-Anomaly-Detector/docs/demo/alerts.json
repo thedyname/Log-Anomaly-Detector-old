@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "config": {
+    "window_seconds": 300,
+    "failure_threshold": 5,
+    "user_threshold": 4
+  },
+  "summary": {
+    "total_lines": 13,
+    "parsed_events": 12,
+    "ignored_lines": 1
+  },
+  "alerts": [
+    {
+      "id": "AL-0001",
+      "rule": "SSH_FAILURE_BURST",
+      "severity": "medium",
+      "timestamp": "2026-11-17T10:00:40+00:00",
+      "host": "lab-web",
+      "source_ip": "192.0.2.10",
+      "user": "admin",
+      "failure_count": 5,
+      "users": [
+        "admin"
+      ],
+      "evidence_lines": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "explanation": "At least 5 failed SSH authentications within 300s."
+    },
+    {
+      "id": "AL-0002",
+      "rule": "SSH_SUCCESS_AFTER_FAILURES",
+      "severity": "high",
+      "timestamp": "2026-11-17T10:00:50+00:00",
+      "host": "lab-web",
+      "source_ip": "192.0.2.10",
+      "user": "admin",
+      "failure_count": 5,
+      "users": [
+        "admin"
+      ],
+      "evidence_lines": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "explanation": "Successful authentication follows repeated failures for the same account, host and source IP. Investigate; compromise is not proven."
+    },
+    {
+      "id": "AL-0003",
+      "rule": "SSH_MULTI_ACCOUNT",
+      "severity": "medium",
+      "timestamp": "2026-11-17T10:10:30+00:00",
+      "host": "lab-db",
+      "source_ip": "203.0.113.7",
+      "user": "backup",
+      "failure_count": 4,
+      "users": [
+        "backup",
+        "deploy",
+        "guest",
+        "test"
+      ],
+      "evidence_lines": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "explanation": "Failed SSH authentications target at least 4 accounts within 300s."
+    },
+    {
+      "id": "AL-0004",
+      "rule": "SSH_ROOT_LOGIN",
+      "severity": "medium",
+      "timestamp": "2026-11-17T11:00:00+00:00",
+      "host": "lab-db",
+      "source_ip": "2001:db8::20",
+      "user": "root",
+      "failure_count": 0,
+      "users": [
+        "root"
+      ],
+      "evidence_lines": [
+        12
+      ],
+      "explanation": "Successful direct root SSH login. Review whether this is authorized."
+    }
+  ]
+}
