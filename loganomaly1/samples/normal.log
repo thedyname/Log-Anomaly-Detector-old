@@ -1,3 +1,0 @@
-2026-11-17T09:00:00Z lab sshd[10]: Accepted publickey for analyst from 198.51.100.20 port 52000 ssh2
-2026-11-17T09:01:00Z lab sshd[11]: Failed password for analyst from 198.51.100.20 port 52001 ssh2
-2026-11-17T09:01:10Z lab sshd[12]: Accepted password for analyst from 198.51.100.20 port 52002 ssh2
